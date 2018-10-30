@@ -7,7 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements BaseFragment.OnFragmentInteractionListener {
+import ru.home.mvpapplicationdemo.contact.ContactFragment;
+import ru.home.mvpapplicationdemo.dummy.DummyContent;
+
+public class MainActivity extends AppCompatActivity implements BaseFragment.OnFragmentInteractionListener,
+        ContactFragment.OnListFragmentInteractionListener {
 
     private static final String CURRENT_FRAGMENT_TAG = "current_fragment_tag";
 
@@ -25,11 +29,16 @@ public class MainActivity extends AppCompatActivity implements BaseFragment.OnFr
     }
 
     private Fragment createFragment(Bundle args) {
-        return new Fragment1();
+        return new ContactFragment();
     }
 
     @Override
     public void onFragmentInteraction(Uri uri) {
         Toast.makeText(this, uri.toString(), Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onListFragmentInteraction(DummyContent.DummyItem item) {
+        // TODO: implement
     }
 }
